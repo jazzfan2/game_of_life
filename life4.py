@@ -39,11 +39,11 @@ import subprocess
 import os
 import signal
 import time
-universe_size = 120									# Total "universal" grid size
-max_width = int(sys.argv[1])						# e.g. 82 for grid of horizontal camera grid 82
-max_height = int(sys.argv[2])						# e.g. 48 for grid of vertical camera grid 48
-birth_rule = [int(j) for j in str(sys.argv[3])]		# e.g. 3 for B3 
-survival_rule = [int(j) for j in str(sys.argv[4])]	# e.g. 23 for S23
+universe_size = 120                                 # Total "universal" grid size
+max_width = int(sys.argv[1])                        # e.g. 82 for grid of horizontal camera grid 82
+max_height = int(sys.argv[2])                       # e.g. 48 for grid of vertical camera grid 48
+birth_rule = [int(j) for j in str(sys.argv[3])]     # e.g. 3 for B3 
+survival_rule = [int(j) for j in str(sys.argv[4])]  # e.g. 23 for S23
 grid = []
 os.system('clear')
 os.system('gnome-terminal -t "CAMERA CONTROL" --geometry 0x5+0+0 -e /home/rob/scripts/lifecamera.sh&')
@@ -68,7 +68,7 @@ seed = []
 for line in f.readlines():
     if not line:
         break
-    seed.append([int(i) for i in str(line[:-1])])		# Minus the \n at the end (-1)
+    seed.append([int(i) for i in str(line[:-1])])   # Minus the \n at the end (-1)
 f.close()
 #
 """Offsets needed for centering seed part on grid:"""
@@ -97,7 +97,7 @@ width,height = max_width,max_height
 out_w = (universe_size - width) / 2
 out_h = (universe_size - height) / 2
 while True: 
-    grid2 = [x[:] for x in grid]	# Deep copying essential with 2D lists, to avoid referencing !
+    grid2 = [x[:] for x in grid]    # Deep copying essential with 2D lists, to avoid referencing !
     for y in xrange(1,universe_size):
         for x in xrange(1,universe_size):
             neighbours = sum(grid[y-1][x-1:x+2]) + grid[y][x-1] + grid[y][x+1] + sum(grid[y+1][x-1:x+2])
