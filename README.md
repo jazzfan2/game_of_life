@@ -2,7 +2,7 @@
 life4.py - Program that visualizes John Conway's "Game of Life" in a command terminal.
 
 # Description:
-life4.py visualizes John Conway's "Game of Life" in a command terminal, with additional controls to move the viewpoint and to zoom in and out on the animation.
+life4.py is a Python program that visualizes John Conway's "Game of Life" in a command terminal, with additional controls to move the viewpoint and to zoom in and out on the animation.
 
 See for background and details: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
