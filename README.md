@@ -15,7 +15,7 @@ In order to start the "Game of Life" animation, supply the following command in 
 
 	./life4.py 82 48 3 23
 
-The first two arguments are the horizontal and vertical grid sizes of the image "canvas" in the terminal. The values 82 and 48 are an example of a adequate grid size, but can of course be replaced by other values, dependent upon terminal-type and terminal/character size.
+The first two arguments are the horizontal and vertical grid sizes of the image "canvas" in the terminal. The values 82 and 48 are an example of an adequate grid size, but can of course be replaced by other values, dependent upon terminal-type and terminal/character size.
 
 The third and fourth argument represent the settings of the "Birth rule" and "Survival rule" respectively.
 Respective values 3 and 23 render a good probability that the life action on the canvas will persist and develop for quite some time before dying out (that is: dependant upon which start condition has been chosen).
