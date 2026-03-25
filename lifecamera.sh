@@ -1,11 +1,11 @@
 #!/bin/bash
-# Naam: lifecamera.sh
-# Auteur: Rob Toscani
-# Datum: 22 apr 2017
-# Toelichting: Besturing van het zichtbare beeld ("camera") van life4.py 
+# Name: lifecamera.sh
+# Author: Rob Toscani
+# Date: 22nd of April 2017
+# Description: Control of the visible image ("camera") of life4.py
 #
-# Dit proces wordt geopend vanuit het python-script life4.py zelf.
-# Zie ook http://stackoverflow.com/questions/10679188/casing-arrow-keys-in-bash
+# This process is opened from the life4.py Python script itself.
+# See also http://stackoverflow.com/questions/10679188/casing-arrow-keys-in-bash
 #
 #################################################################################
 #

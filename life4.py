@@ -6,13 +6,14 @@
 #
 ####################################################################################################
 #
-# Versie met "bewegende camera" bediend vanuit een aparte terminal waarin het script lifecamera.sh 
-# wordt gerund. Punt van onderzoek zou nog kunnen zijn: de portabiliteit (i.v.m. de vereiste 
-# terminaltypen), eventueel later.
-# De camera wordt bediend met pijltjes-toetsen (pan/tilt), <PAGEUP>/<PAGEDOWN> (zoom in/out) en <HOME>
-# (reset, center). Het programma kan worden gestopt met <END> of met Ctrl-C
-# Error-handling uitgebreid, tegen te grote opgegeven waarden voor het camera grid.
-# Konsole onder Gnome met grid 82 x 48 geeft het beste resultaat.
+# Version with "moving camera" operated from a separate terminal in which the script lifecamera.sh
+# is run. A point for further investigation could be portability (due to the required terminal types),
+# possibly later.
+# The camera is controlled using arrow keys (pan/tilt), <PAGEUP>/<PAGEDOWN> (zoom in/out), and <HOME>
+# (reset, center). The program can be stopped with <END> or Ctrl-C.
+# Extended error handling regarding values ​​specified too large for the camera grid.
+
+# Console under Gnome with an 82 x 48 grid gives the best result.
 #
 ######################################################################################
 #
