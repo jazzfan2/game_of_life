@@ -49,20 +49,20 @@ grid = []
 os.system('clear')
 os.system('gnome-terminal -t "CAMERA CONTROL" --geometry 0x5+0+0 -e /home/rob/scripts/lifecamera.sh&')
 os.system('echo "" > /dev/shm/control_file')
-#
+
 def handleSIGINT(a,b):
     os.system('kill -9 `pgrep lifecamera` 2>/dev/null')
     print('\033[0m')
     os.system('clear')
     sys.exit()
 signal.signal(signal.SIGINT, handleSIGINT)
-#
+
 """Empty grid:"""
 for y in range(universe_size+1):
     grid.append([])
     for x in range(universe_size+1):
         grid[y].append(0)
-#
+
 """Start condition by seed part:"""
 f = open('life_startcondition.txt')
 seed = []
@@ -71,13 +71,13 @@ for line in f.readlines():
         break
     seed.append([int(i) for i in str(line[:-1])])   # Minus the \n at the end (-1)
 f.close()
-#
+
 """Offsets needed for centering seed part on grid:"""
 seedwidth = len(seed[0])
 seedheight = len(seed)
 offset_x = (universe_size - seedwidth - 1) // 2
 offset_y = (universe_size - seedheight - 1) // 2
-#
+
 """Error handling:"""
 cols = int(subprocess.check_output(["tput", "cols"])[:-1]) // 2 - 1
 lines = int(subprocess.check_output(["tput", "lines"])[:-1]) - 2
@@ -87,12 +87,12 @@ if max_width >= cols or max_height >= lines:
 if offset_x < 0 or offset_y < 0:
     print("Seed part too large")
     sys.exit()
-#
+
 """Placement of seed part on grid:"""
 for y in range(len(seed)):
     for x in range(len(seed[y])):
         grid[y + offset_y][x + offset_x] = seed[y][x]
-#
+
 """Second grid with new cell states as a function of the number of live neighbours in first grid:"""
 width,height = max_width,max_height
 out_w = (universe_size - width) // 2
@@ -106,7 +106,7 @@ while True:
                 grid2[y][x] = 0
             elif grid[y][x] == 0 and neighbours in birth_rule:
                 grid2[y][x] = 1
-#
+
     """Camera control:"""
     f = open('/dev/shm/control_file')
     command = f.readline()[:-1]
@@ -141,7 +141,7 @@ while True:
         sys.exit()
     f.close()
     os.system('clear')
-#
+
     """Colour representation of second grid:"""
     for y in range(out_h, out_h + height+1):
         for x in range(out_w, out_w + width+1):                    
@@ -156,5 +156,3 @@ while True:
                 print('\r')
     time.sleep(0.03)
     grid = [x[:] for x in grid2]
-#
-
