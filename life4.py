@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Name  : life4.py
 # Author: Rob Toscani
 # Date  : 14-04-2017
@@ -52,15 +52,15 @@ os.system('echo "" > /dev/shm/control_file')
 #
 def handleSIGINT(a,b):
     os.system('kill -9 `pgrep lifecamera` 2>/dev/null')
-    print '\033[0m'
+    print('\033[0m')
     os.system('clear')
     sys.exit()
 signal.signal(signal.SIGINT, handleSIGINT)
 #
 """Empty grid:"""
-for y in xrange(universe_size+1):
+for y in range(universe_size+1):
     grid.append([])
-    for x in xrange(universe_size+1):
+    for x in range(universe_size+1):
         grid[y].append(0)
 #
 """Start condition by seed part:"""
@@ -75,32 +75,32 @@ f.close()
 """Offsets needed for centering seed part on grid:"""
 seedwidth = len(seed[0])
 seedheight = len(seed)
-offset_x = (universe_size - seedwidth - 1) / 2
-offset_y = (universe_size - seedheight - 1) / 2
+offset_x = (universe_size - seedwidth - 1) // 2
+offset_y = (universe_size - seedheight - 1) // 2
 #
 """Error handling:"""
-cols = int(subprocess.check_output(["tput", "cols"])[:-1]) / 2 - 1
+cols = int(subprocess.check_output(["tput", "cols"])[:-1]) // 2 - 1
 lines = int(subprocess.check_output(["tput", "lines"])[:-1]) - 2
 if max_width >= cols or max_height >= lines:
     max_width = cols
     max_height = lines
 if offset_x < 0 or offset_y < 0:
-    print "Seed part too large"
+    print("Seed part too large")
     sys.exit()
 #
 """Placement of seed part on grid:"""
-for y in xrange(len(seed)):
-    for x in xrange(len(seed[y])):
+for y in range(len(seed)):
+    for x in range(len(seed[y])):
         grid[y + offset_y][x + offset_x] = seed[y][x]
 #
 """Second grid with new cell states as a function of the number of live neighbours in first grid:"""
 width,height = max_width,max_height
-out_w = (universe_size - width) / 2
-out_h = (universe_size - height) / 2
+out_w = (universe_size - width) // 2
+out_h = (universe_size - height) // 2
 while True: 
     grid2 = [x[:] for x in grid]    # Deep copying essential with 2D lists, to avoid referencing !
-    for y in xrange(1,universe_size):
-        for x in xrange(1,universe_size):
+    for y in range(1,universe_size):
+        for x in range(1,universe_size):
             neighbours = sum(grid[y-1][x-1:x+2]) + grid[y][x-1] + grid[y][x+1] + sum(grid[y+1][x-1:x+2])
             if grid[y][x] == 1 and neighbours not in survival_rule:
                 grid2[y][x] = 0
@@ -133,27 +133,27 @@ while True:
         height += 2
     elif command == 'reset':
         width,height = max_width,max_height
-        out_w = (universe_size - width) / 2
-        out_h = (universe_size - height) / 2
+        out_w = (universe_size - width) // 2
+        out_h = (universe_size - height) // 2
     elif  command == 'stop':
-        print '\033[0m'
+        print('\033[0m')
         os.system('clear')
         sys.exit()
     f.close()
     os.system('clear')
 #
     """Colour representation of second grid:"""
-    for y in xrange(out_h, out_h + height+1):
-        for x in xrange(out_w, out_w + width+1):                    
+    for y in range(out_h, out_h + height+1):
+        for x in range(out_w, out_w + width+1):                    
             if grid2[y][x] == 1:
-#               print '1',
-                print '\033[7;36;46m' + '1' + '\033[0m',
-#               print '\033[7;36;46m' + '1',
+#               print('1', end='')
+                print('\033[7;36;46m' + '1' + '\033[0m', end='')
+#               print('\033[7;36;46m' + '1', end='')
             elif grid2[y][x] == 0:
-#               print '0',
-                print '\033[3;34;44m' + '0',
+#               print('0', end='')
+                print('\033[3;34;44m' + '0', end='')
             if x == out_w + width:                           
-                print '\r'
+                print('\r')
     time.sleep(0.03)
     grid = [x[:] for x in grid2]
 #
