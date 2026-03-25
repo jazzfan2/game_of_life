@@ -11,7 +11,7 @@
 # possibly later.
 # The camera is controlled using arrow keys (pan/tilt), <PAGEUP>/<PAGEDOWN> (zoom in/out), and <HOME>
 # (reset, center). The program can be stopped with <END> or Ctrl-C.
-# Extended error handling regarding values ​​specified too large for the camera grid.
+# With improved error handling regarding values ​​specified too large for the camera grid.
 #
 # 'Konsole' under Gnome with an 82 x 48 grid gives the best result.
 #
